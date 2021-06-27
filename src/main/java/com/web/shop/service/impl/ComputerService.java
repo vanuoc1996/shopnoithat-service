@@ -1,8 +1,9 @@
-package com.web.shop.service;
+package com.web.shop.service.impl;
 
 import com.web.shop.Enum.ComputerStatus;
 import com.web.shop.entity.Computer;
 import com.web.shop.repository.IComputerRepository;
+import com.web.shop.service.IComputerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
