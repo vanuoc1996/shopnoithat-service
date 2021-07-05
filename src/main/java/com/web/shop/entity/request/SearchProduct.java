@@ -10,9 +10,9 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SearchProduct {
-    private int productTypeId;
-    private String productCode = "";
-    private String productName = "";
-    private long priceNewMin = 0;
-    private long priceNewMax = Long.MAX_VALUE;
+        private int productTypeId;
+    private String  productCode = "";
+    private String  productName = "";
+    private long    priceNewMin = 0;
+    private long    priceNewMax = Long.MAX_VALUE;
 }

@@ -14,9 +14,9 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     long countProductByProductTypeId(int productTypeId);
 
-    @Query(value = "select * from Product \n" +
-            "where productTypeId = :productTypeId and productCode like "%" + :productCode + "%" "+
-            "and productName like %:productCode% and priceNew between :priceNewMin and :priceNewMax", nativeQuery = true)
+    @Query(value = "select * from Product where productTypeId = :productTypeId " +
+            "and productCode like %:productCode% and productName like %:productName% " +
+            "and priceNew between :priceNewMin and :priceNewMax", nativeQuery = true)
     List<Product> findByProductTypeId(@Param("productTypeId") int productTypeId, @Param("productCode") String productCode,
                                       @Param("productName")String productName,
                                       @Param("priceNewMin")long priceNewMin, @Param("priceNewMax")long priceNewMax);
