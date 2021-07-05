@@ -1,7 +1,7 @@
 package com.web.shop.service.impl;
 
 import com.web.shop.entity.Vote;
-import com.web.shop.repository.IVoteRepository;
+import com.web.shop.repository.VoteRepository;
 import com.web.shop.service.IVoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,7 @@ import java.util.List;
 public class VoteService implements IVoteService {
 
     @Autowired
-    IVoteRepository voteRepository;
+    VoteRepository voteRepository;
 
     @Override
     public List<Vote> getAllVoteProduct() {
