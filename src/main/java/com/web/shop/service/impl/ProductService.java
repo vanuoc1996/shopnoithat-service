@@ -24,11 +24,12 @@ public class ProductService implements IProductService {
     @Override
     public List<Product> getAllProductByProductType(SearchProduct searchProduct) {
         int productTypeId = searchProduct.getProductTypeId();
-        String productCode = searchProduct.getProductName();
+        String productCode = searchProduct.getProductCode();
         String productName = searchProduct.getProductName();
         long priceNewMin = searchProduct.getPriceNewMin();
         long priceNewMax = searchProduct.getPriceNewMax();
-        return productRepository.findByProductTypeId(productTypeId, productCode, productName, priceNewMin, priceNewMax);
+        long a = searchProduct.
+        return productRepository.findByProductTypeId( productCode, productName, priceNewMin, priceNewMax);
     }
 
     @Override
