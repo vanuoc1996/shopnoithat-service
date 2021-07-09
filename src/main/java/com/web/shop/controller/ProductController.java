@@ -19,19 +19,25 @@ public class ProductController {
     @Autowired
     IProductService productService;
 
-    @GetMapping("getall/allproduct")
+    @GetMapping("getall")
     public ResponseEntity<?> getAllProduct() {
         List<Product> entity = productService.getAllProduct();
         return new ResponseEntity<List<Product>>(entity, HttpStatus.OK);
     }
 
-    @GetMapping("getall/producttype")
-    public ResponseEntity<?> getAllProductByProductType(@RequestBody SearchProduct searchProduct) {
-        List<Product> entity = productService.getAllProductByProductType(searchProduct);
+    @GetMapping("get/{productId}")
+    public ResponseEntity<?> getProduct(@PathVariable  int productId) {
+        Product entity = productService.getProductByProductId(productId);
+        return new ResponseEntity<Product>(entity, HttpStatus.OK);
+    }
+
+    @GetMapping("search")
+    public ResponseEntity<?> searchProduct(@RequestBody SearchProduct searchProduct) {
+        List<Product> entity = productService.searchProduct(searchProduct);
         return new ResponseEntity<List<Product>>(entity, HttpStatus.OK);
     }
 
-    @GetMapping("count/producttype")
+    @GetMapping("count")
     public ResponseEntity<?> count(@RequestParam int productTypeId) {
         long rs = productService.countProduct( productTypeId);
         return new ResponseEntity<Long>(rs, HttpStatus.OK);
