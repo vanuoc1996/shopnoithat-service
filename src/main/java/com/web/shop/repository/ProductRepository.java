@@ -14,14 +14,8 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     long countProductByProductTypeId(int productTypeId);
 
-<<<<<<< Updated upstream
-    @Query(value = "select * from Product where productCode like %:productCode% and productName like %:productName% " +
-            "and priceNew between :priceNewMin and :priceNewMax", nativeQuery = true)
-    List<Product> findByProductTypeId( @Param("productCode") String productCode, @Param("productName")String productName,
-=======
     @Query(value = "select * from Product where productCode like CONCAT(N'%',:productCode, '%') " +
             "and productName like CONCAT(N'%',:productName, '%') and priceNew between :priceNewMin and :priceNewMax", nativeQuery = true)
     List<Product> searchProduct(@Param("productCode") String productCode,@Param("productName")String productName,
->>>>>>> Stashed changes
                                       @Param("priceNewMin")long priceNewMin, @Param("priceNewMax")long priceNewMax);
 }

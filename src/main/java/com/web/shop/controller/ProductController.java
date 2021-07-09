@@ -1,6 +1,7 @@
 package com.web.shop.controller;
 
 import com.web.shop.entity.Product;
+import com.web.shop.entity.request.CustomerCommentRQ;
 import com.web.shop.entity.request.SearchProduct;
 import com.web.shop.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,5 +42,25 @@ public class ProductController {
     public ResponseEntity<?> count(@RequestParam int productTypeId) {
         long rs = productService.countProduct( productTypeId);
         return new ResponseEntity<Long>(rs, HttpStatus.OK);
+    }
+
+    @PostMapping("admin/creat")
+    public ResponseEntity<?> creatProdcut(@RequestBody Product product) {
+      boolean rs;
+        try {
+            productService.creatProduct(product);
+            rs = true;
+        } catch (Exception e) {
+            rs = false;
+            System.out.println(e);
+        }
+        return new ResponseEntity<Boolean>(rs, HttpStatus.OK);
+    }
+
+    @PostMapping("admin/delete")
+    public ResponseEntity<?> deleteProdcut(@RequestBody int productId) {
+        productService.deleteProduct(productId);
+        boolean rs = true;
+        return new ResponseEntity<Boolean>(rs, HttpStatus.OK);
     }
 }

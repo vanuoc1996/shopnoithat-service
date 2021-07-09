@@ -22,32 +22,32 @@ public class ProductService implements IProductService {
     }
 
     @Override
-<<<<<<< Updated upstream
-    public List<Product> getAllProductByProductType(SearchProduct searchProduct) {
-        int productTypeId = searchProduct.getProductTypeId();
-=======
-    public Product getProductByProductId(int productId) {
-        return productRepository.findById(productId).get();
-    }
-
-    @Override
     public List<Product> searchProduct(SearchProduct searchProduct) {
-
->>>>>>> Stashed changes
         String productCode = searchProduct.getProductCode();
         String productName = searchProduct.getProductName();
         long priceNewMin = searchProduct.getPriceNewMin();
         long priceNewMax = searchProduct.getPriceNewMax();
-<<<<<<< Updated upstream
-        long a = searchProduct.
-        return productRepository.findByProductTypeId( productCode, productName, priceNewMin, priceNewMax);
-=======
         return productRepository.searchProduct(productCode, productName, priceNewMin, priceNewMax);
->>>>>>> Stashed changes
+    }
+
+    @Override
+    public Product getProductByProductId(int ProductId) {
+        return productRepository.findById(ProductId).get();
     }
 
     @Override
     public long countProduct(int productTypeId) {
         return productRepository.countProductByProductTypeId(productTypeId);
+    }
+
+    @Override
+    public void creatProduct(Product product) {
+        productRepository.save(product);
+    }
+
+    @Override
+    public void deleteProduct(int productId) {
+        Product product = getProductByProductId(productId);
+        productRepository.delete(product);
     }
 }

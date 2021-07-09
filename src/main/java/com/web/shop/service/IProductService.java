@@ -12,9 +12,13 @@ import java.util.List;
 public interface IProductService {
     List<Product> getAllProduct();
 
-    Product getProductByProductId(int productId);
-
     List<Product> searchProduct(SearchProduct searchProduct);
 
+    Product getProductByProductId(int ProductId);
+
     long countProduct(int productTypeId);
+
+    void creatProduct(Product product);
+
+    void deleteProduct(int productId);
 }
